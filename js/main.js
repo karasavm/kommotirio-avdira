@@ -46,8 +46,8 @@
 
   // ---- Hero parallax ----
   const heroImg = document.querySelector('.hero-img');
-  if (heroImg) {
-    heroImg.style.willChange = 'transform';
+  const prefersReducedParallax = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (heroImg && !prefersReducedParallax) {
     let ticking = false;
     window.addEventListener('scroll', () => {
       if (!ticking) {
