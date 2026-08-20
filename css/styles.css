@@ -5,24 +5,24 @@
 
 /* ---- Design tokens ---- */
 :root {
-  --color-bg: #fff7f2;
+  --color-bg: #fff7f9;
   --color-surface: #ffffff;
-  --color-surface-alt: #fff0e8;
-  --color-border: #ffd8c8;
-  --color-text: #2d1f24;
-  --color-text-muted: #7d5566;
-  --color-accent: #ff5a8a;
-  --color-accent-dark: #e03366;
-  --color-accent-light: #ffe4ec;
-  --color-accent-gold: #ffc845;
-  --color-accent-teal: #2ec4b6;
-  --color-accent-purple: #9b5de5;
-  --color-link: #ff5a8a;
-  --color-focus: #2ec4b6;
-  --color-cta-bg: linear-gradient(135deg, #ff5a8a 0%, #ff8c42 100%);
-  --color-cta-fg: #ffffff;
-  --color-cta-bg-solid: #ff5a8a;
-  --color-cta-bg-hover: linear-gradient(135deg, #e03366 0%, #f56d2c 100%);
+  --color-surface-alt: #fff0f5;
+  --color-border: #f3e0eb;
+  --color-text: #2a1f2d;
+  --color-text-muted: #7a6a80;
+  --color-accent: #ff8fa3;
+  --color-accent-dark: #e56b80;
+  --color-accent-light: #ffe8ed;
+  --color-accent-gold: #ffd3b6;
+  --color-accent-teal: #a8e6cf;
+  --color-accent-purple: #e8c6ff;
+  --color-link: #e56b80;
+  --color-focus: #a8e6cf;
+  --color-cta-bg: linear-gradient(135deg, #ff8fa3 0%, #ffd3b6 100%);
+  --color-cta-fg: #2a1f2d;
+  --color-cta-bg-solid: #ff8fa3;
+  --color-cta-bg-hover: linear-gradient(135deg, #e56b80 0%, #ff8fa3 100%);
 
   --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-heading: var(--font-body);
@@ -68,44 +68,44 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-bg: #1f141b;
-    --color-surface: #2a1c25;
-    --color-surface-alt: #382630;
-    --color-border: #5a3a48;
-    --color-text: #fff4f7;
-    --color-text-muted: #d9a6b8;
-    --color-accent: #ff7aa3;
-    --color-accent-dark: #ff9ec0;
-    --color-accent-light: #3e2030;
-    --color-accent-gold: #ffd86b;
-    --color-accent-teal: #5de9db;
-    --color-accent-purple: #c49aff;
-    --color-link: #ff7aa3;
-    --color-cta-bg: linear-gradient(135deg, #ff7aa3 0%, #ff9e5d 100%);
-    --color-cta-fg: #2a1018;
-    --color-cta-bg-solid: #ff7aa3;
-    --color-cta-bg-hover: linear-gradient(135deg, #ff9ec0 0%, #ffbb7a 100%);
+    --color-bg: #241e28;
+    --color-surface: #2f2834;
+    --color-surface-alt: #3b3340;
+    --color-border: #4d4252;
+    --color-text: #fff4f9;
+    --color-text-muted: #b8a9b8;
+    --color-accent: #ffb3c1;
+    --color-accent-dark: #ffd3b6;
+    --color-accent-light: #3d2a35;
+    --color-accent-gold: #ffd3b6;
+    --color-accent-teal: #a8e6cf;
+    --color-accent-purple: #e8c6ff;
+    --color-link: #ffb3c1;
+    --color-cta-bg: linear-gradient(135deg, #ffb3c1 0%, #ffd3b6 100%);
+    --color-cta-fg: #241e28;
+    --color-cta-bg-solid: #ffb3c1;
+    --color-cta-bg-hover: linear-gradient(135deg, #ffd3b6 0%, #ffe8d6 100%);
   }
 }
 
 :root[data-theme="dark"] {
-  --color-bg: #1f141b;
-  --color-surface: #2a1c25;
-  --color-surface-alt: #382630;
-  --color-border: #5a3a48;
-  --color-text: #fff4f7;
-  --color-text-muted: #d9a6b8;
-  --color-accent: #ff7aa3;
-  --color-accent-dark: #ff9ec0;
-  --color-accent-light: #3e2030;
-  --color-accent-gold: #ffd86b;
-  --color-accent-teal: #5de9db;
-  --color-accent-purple: #c49aff;
-  --color-link: #ff7aa3;
-  --color-cta-bg: linear-gradient(135deg, #ff7aa3 0%, #ff9e5d 100%);
-  --color-cta-fg: #2a1018;
-  --color-cta-bg-solid: #ff7aa3;
-  --color-cta-bg-hover: linear-gradient(135deg, #ff9ec0 0%, #ffbb7a 100%);
+  --color-bg: #241e28;
+  --color-surface: #2f2834;
+  --color-surface-alt: #3b3340;
+  --color-border: #4d4252;
+  --color-text: #fff4f9;
+  --color-text-muted: #b8a9b8;
+  --color-accent: #ffb3c1;
+  --color-accent-dark: #ffd3b6;
+  --color-accent-light: #3d2a35;
+  --color-accent-gold: #ffd3b6;
+  --color-accent-teal: #a8e6cf;
+  --color-accent-purple: #e8c6ff;
+  --color-link: #ffb3c1;
+  --color-cta-bg: linear-gradient(135deg, #ffb3c1 0%, #ffd3b6 100%);
+  --color-cta-fg: #241e28;
+  --color-cta-bg-solid: #ffb3c1;
+  --color-cta-bg-hover: linear-gradient(135deg, #ffd3b6 0%, #ffe8d6 100%);
 }
 
 /* ---- Reset ---- */
@@ -227,25 +227,25 @@ a:hover { color: var(--color-accent-dark); }
   color: var(--color-cta-fg);
   border-color: transparent;
   border-radius: var(--radius-full);
-  box-shadow: 0 4px 14px rgba(255, 90, 138, .35);
+  box-shadow: 0 4px 14px rgba(255, 143, 163, .35);
 }
 .btn-primary:hover, .btn-primary:focus-visible {
   background: var(--color-cta-bg-hover);
   border-color: transparent;
   color: var(--color-cta-fg);
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(255, 90, 138, .45);
+  box-shadow: 0 8px 22px rgba(255, 143, 163, .45);
 }
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--color-cta-fg);
-  border-color: var(--color-cta-fg);
+  color: #ffffff;
+  border-color: #ffffff;
   border-radius: var(--radius-full);
 }
 .btn-secondary:hover, .btn-secondary:focus-visible {
   background-color: rgba(255,255,255,.15);
-  color: var(--color-cta-fg);
+  color: #ffffff;
   transform: translateY(-2px);
 }
 
@@ -263,7 +263,7 @@ a:hover { color: var(--color-accent-dark); }
   background-color: rgba(255, 255, 255, .92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--color-border);
-  box-shadow: 0 2px 18px rgba(255, 90, 138, .10);
+  box-shadow: 0 2px 18px rgba(0, 0, 0, .08);
 }
 
 .header-inner {
@@ -323,7 +323,7 @@ a:hover { color: var(--color-accent-dark); }
     color: var(--color-cta-fg) !important;
     font-weight: 700;
     border-radius: var(--radius-full);
-    box-shadow: 0 3px 10px rgba(255, 90, 138, .30);
+    box-shadow: 0 3px 10px rgba(255, 143, 163, .30);
   }
 }
 
@@ -444,7 +444,7 @@ a:hover { color: var(--color-accent-dark); }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(255, 90, 138, .62) 0%, rgba(46, 196, 182, .48) 50%, rgba(255, 140, 66, .55) 100%);
+  background: linear-gradient(160deg, rgba(232, 198, 255, .55) 0%, rgba(255, 143, 163, .48) 50%, rgba(168, 230, 207, .45) 100%);
   mix-blend-mode: multiply;
 }
 
@@ -492,7 +492,7 @@ a:hover { color: var(--color-accent-dark); }
 }
 
 /* Placeholder hero background when image missing */
-.hero { background-color: #2a1520; }
+.hero { background-color: #2a1f2d; }
 
 /* ---- Services ---- */
 .services-grid {
@@ -538,7 +538,7 @@ a:hover { color: var(--color-accent-dark); }
   transition: opacity 300ms ease;
 }
 .service-card:hover {
-  box-shadow: 0 12px 32px rgba(255, 90, 138, .18);
+  box-shadow: 0 12px 32px rgba(255, 143, 163, .18);
   transform: translateY(-6px) rotate(-1deg);
   border-color: var(--color-accent-light);
 }
@@ -578,7 +578,7 @@ a:hover { color: var(--color-accent-dark); }
 }
 .why-card:hover {
   border-left-color: var(--color-accent-teal);
-  box-shadow: 0 12px 32px rgba(46, 196, 182, .16);
+  box-shadow: 0 12px 32px rgba(168, 230, 207, .20);
   transform: translateX(6px);
 }
 .why-card h3 {
@@ -620,7 +620,7 @@ a:hover { color: var(--color-accent-dark); }
   transition: transform 300ms ease, box-shadow 300ms ease;
 }
 .gallery-item:nth-child(3n+2) { border-color: var(--color-accent-gold); }
-.gallery-item:nth-child(3n+3) { border-color: var(--color-accent-teal); }
+.gallery-item:nth-child(3n+3) { border-color: var(--color-accent-light); }
 .gallery-item img {
   width: 100%;
   height: 100%;
@@ -629,7 +629,7 @@ a:hover { color: var(--color-accent-dark); }
 }
 .gallery-item:hover {
   transform: translateY(-6px) rotate(1deg);
-  box-shadow: 0 16px 40px rgba(255, 90, 138, .22);
+  box-shadow: 0 16px 40px rgba(232, 198, 255, .22);
 }
 .gallery-item:hover img { transform: scale(1.06); }
 
@@ -685,24 +685,14 @@ a:hover { color: var(--color-accent-dark); }
   overflow: hidden;
   background: linear-gradient(135deg, var(--color-surface-alt) 0%, var(--color-accent-light) 100%);
   border: 3px solid var(--color-surface);
-  box-shadow: 0 8px 28px rgba(255, 90, 138, .12);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .08);
   aspect-ratio: 4/3;
 }
 
-.map-placeholder {
+.location-map-preview iframe {
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-3);
-  color: var(--color-text-muted);
-  min-height: 240px;
-}
-.map-placeholder p {
-  font-size: var(--text-sm);
-  font-weight: 600;
+  display: block;
 }
 
 /* ---- Opening hours ---- */
@@ -745,7 +735,7 @@ a:hover { color: var(--color-accent-dark); }
 }
 .faq-item:hover {
   transform: translateX(6px);
-  box-shadow: 0 8px 22px rgba(46, 196, 182, .12);
+  box-shadow: 0 8px 22px rgba(168, 230, 207, .15);
 }
 
 .faq-item dt {
@@ -786,21 +776,21 @@ a:hover { color: var(--color-accent-dark); }
 .cta-title {
   font-size: var(--text-2xl);
   font-weight: 800;
-  color: #fff;
+  color: #2a1f2d;
   margin-bottom: var(--space-4);
   letter-spacing: -0.02em;
 }
 @media (min-width: 768px) { .cta-title { font-size: var(--text-3xl); } }
 
 .cta-text {
-  color: rgba(255,255,255,.85);
+  color: rgba(42,31,45,.85);
   font-size: var(--text-md);
   margin-bottom: var(--space-8);
 }
 
 .btn-cta {
-  background-color: #fff;
-  color: var(--color-accent);
+  background-color: #2a1f2d;
+  color: #fff;
   border-color: transparent;
   font-size: var(--text-xl);
   padding: var(--space-5) var(--space-10);
@@ -808,8 +798,8 @@ a:hover { color: var(--color-accent-dark); }
   box-shadow: 0 6px 20px rgba(0,0,0,.15);
 }
 .btn-cta:hover {
-  background-color: #fff;
-  color: var(--color-accent-dark);
+  background-color: #000;
+  color: #fff;
   border-color: transparent;
   transform: translateY(-3px) scale(1.03);
   box-shadow: 0 10px 28px rgba(0,0,0,.22);
@@ -942,13 +932,13 @@ a:hover { color: var(--color-accent-dark); }
   border-radius: var(--radius-full);
   transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
   min-height: 52px;
-  box-shadow: 0 4px 14px rgba(255, 90, 138, .35);
+  box-shadow: 0 4px 14px rgba(255, 143, 163, .35);
 }
 .mobile-call-btn:hover, .mobile-call-btn:focus-visible {
   background: var(--color-cta-bg-hover);
   color: var(--color-cta-fg);
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(255, 90, 138, .45);
+  box-shadow: 0 8px 22px rgba(255, 143, 163, .45);
 }
 
 /* Add bottom padding to body so sticky bar doesn't cover content */
