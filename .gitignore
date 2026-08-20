@@ -1,0 +1,35 @@
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+
+# Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node (if browser-sync or any dev tooling is used)
+node_modules/
+npm-debug.log*
+
+# Dev server output
+.cache/
+
+# Image originals / working files (keep exports in images/)
+*.psd
+*.ai
+*.sketch
+*.xd
+*.fig
+
+# Credentials / env
+.env
+.env.local
+
+# Misc
+*.log
+Thumbs.db
