@@ -13,7 +13,6 @@
       mobileNav.hidden = isOpen;
     });
 
-    // Close on nav link click
     mobileNav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         toggle.setAttribute('aria-expanded', 'false');
@@ -21,7 +20,6 @@
       });
     });
 
-    // Close on Escape
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && !mobileNav.hidden) {
         toggle.setAttribute('aria-expanded', 'false');
@@ -31,7 +29,7 @@
     });
   }
 
-  // ---- Scroll-aware header shadow ----
+  // ---- Scroll-aware header ----
   const header = document.querySelector('.site-header');
   if (header) {
     let ticking = false;
@@ -46,9 +44,28 @@
     }, { passive: true });
   }
 
+  // ---- Hero parallax ----
+  const heroImg = document.querySelector('.hero-img');
+  if (heroImg) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrolled = window.scrollY;
+          heroImg.style.transform = `translateY(${scrolled * 0.3}px)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
   // ---- Scroll animations ----
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!prefersReduced && 'IntersectionObserver' in window) {
+
+    const observe = (el) => observer.observe(el);
+
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -56,46 +73,83 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
 
-    // Service cards — staggered up
-    document.querySelectorAll('.service-card').forEach((el, i) => {
+    // Section titles — underline expands + fade up
+    document.querySelectorAll('.section-title').forEach(el => {
       el.dataset.anim = 'up';
-      el.style.setProperty('--delay', `${i * 80}ms`);
-      observer.observe(el);
+      observe(el);
     });
 
-    // Why cards — alternate left/right
+    // Section intros
+    document.querySelectorAll('.section-intro').forEach(el => {
+      el.dataset.anim = 'up';
+      el.style.setProperty('--delay', '120ms');
+      observe(el);
+    });
+
+    // Service cards — clip wipe from bottom, heavily staggered
+    document.querySelectorAll('.service-card').forEach((el, i) => {
+      el.dataset.anim = 'clip';
+      el.style.setProperty('--delay', `${i * 130}ms`);
+      observe(el);
+    });
+
+    // Why cards — strong left/right slide
     document.querySelectorAll('.why-card').forEach((el, i) => {
       el.dataset.anim = i % 2 === 0 ? 'left' : 'right';
-      el.style.setProperty('--delay', `${i * 100}ms`);
-      observer.observe(el);
+      el.style.setProperty('--delay', `${i * 150}ms`);
+      observe(el);
     });
 
-    // Gallery items — scale up
+    // Gallery items — scale up, staggered
     document.querySelectorAll('.gallery-item').forEach((el, i) => {
       el.dataset.anim = 'scale';
-      el.style.setProperty('--delay', `${i * 70}ms`);
-      observer.observe(el);
+      el.style.setProperty('--delay', `${i * 100}ms`);
+      observe(el);
     });
 
-    // FAQ items — staggered up
+    // Location columns
+    document.querySelectorAll('.location-info').forEach(el => {
+      el.dataset.anim = 'left';
+      observe(el);
+    });
+    document.querySelectorAll('.location-map-preview').forEach(el => {
+      el.dataset.anim = 'right';
+      el.style.setProperty('--delay', '150ms');
+      observe(el);
+    });
+
+    // Hours table
+    document.querySelectorAll('.hours-table').forEach(el => {
+      el.dataset.anim = 'up';
+      observe(el);
+    });
+    document.querySelectorAll('.hours-note').forEach(el => {
+      el.dataset.anim = 'up';
+      el.style.setProperty('--delay', '150ms');
+      observe(el);
+    });
+
+    // FAQ items — staggered up, longer cascade
     document.querySelectorAll('.faq-item').forEach((el, i) => {
       el.dataset.anim = 'up';
-      el.style.setProperty('--delay', `${i * 60}ms`);
-      observer.observe(el);
+      el.style.setProperty('--delay', `${i * 110}ms`);
+      observe(el);
     });
 
-    // Section titles — expand the underline
-    document.querySelectorAll('.section-title').forEach(el => {
-      observer.observe(el);
+    // CTA section
+    document.querySelectorAll('.cta-title, .cta-text, .btn-cta').forEach((el, i) => {
+      el.dataset.anim = 'up';
+      el.style.setProperty('--delay', `${i * 120}ms`);
+      observe(el);
     });
 
-    // Location and hours blocks — slide up
-    document.querySelectorAll('.location-info, .location-map-preview, .hours-table').forEach((el, i) => {
+    // Footer columns
+    document.querySelectorAll('.footer-brand, .footer-nav, .footer-social').forEach((el, i) => {
       el.dataset.anim = 'up';
       el.style.setProperty('--delay', `${i * 100}ms`);
-      observer.observe(el);
+      observe(el);
     });
   }
 
@@ -103,14 +157,13 @@
   const yearEl = document.getElementById('footer-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // ---- Smooth scroll polyfill for anchor links (for browsers without CSS scroll-behavior) ----
+  // ---- Smooth scroll for anchor links ----
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
       const target = document.querySelector(anchor.getAttribute('href'));
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        // Move focus to the section for accessibility
         if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
         target.focus({ preventScroll: true });
       }
