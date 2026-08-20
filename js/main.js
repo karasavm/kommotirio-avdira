@@ -46,21 +46,55 @@
     }, { passive: true });
   }
 
-  // ---- Scroll-triggered fade-ins ----
+  // ---- Scroll animations ----
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!prefersReduced && 'IntersectionObserver' in window) {
-    const fadeEls = document.querySelectorAll('.service-card, .why-card, .faq-item');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in', 'is-visible');
+          entry.target.classList.add('is-visible');
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
 
-    fadeEls.forEach(el => {
-      el.classList.add('fade-in');
+    // Service cards — staggered up
+    document.querySelectorAll('.service-card').forEach((el, i) => {
+      el.dataset.anim = 'up';
+      el.style.setProperty('--delay', `${i * 80}ms`);
+      observer.observe(el);
+    });
+
+    // Why cards — alternate left/right
+    document.querySelectorAll('.why-card').forEach((el, i) => {
+      el.dataset.anim = i % 2 === 0 ? 'left' : 'right';
+      el.style.setProperty('--delay', `${i * 100}ms`);
+      observer.observe(el);
+    });
+
+    // Gallery items — scale up
+    document.querySelectorAll('.gallery-item').forEach((el, i) => {
+      el.dataset.anim = 'scale';
+      el.style.setProperty('--delay', `${i * 70}ms`);
+      observer.observe(el);
+    });
+
+    // FAQ items — staggered up
+    document.querySelectorAll('.faq-item').forEach((el, i) => {
+      el.dataset.anim = 'up';
+      el.style.setProperty('--delay', `${i * 60}ms`);
+      observer.observe(el);
+    });
+
+    // Section titles — expand the underline
+    document.querySelectorAll('.section-title').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Location and hours blocks — slide up
+    document.querySelectorAll('.location-info, .location-map-preview, .hours-table').forEach((el, i) => {
+      el.dataset.anim = 'up';
+      el.style.setProperty('--delay', `${i * 100}ms`);
       observer.observe(el);
     });
   }
