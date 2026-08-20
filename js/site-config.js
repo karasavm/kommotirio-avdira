@@ -19,15 +19,14 @@ const SITE_CONFIG = {
     lat: 40.9811198,
     lng: 24.952211,
   },
-  // [OPENING_HOURS] — replace null values with actual hours, e.g. '09:00–19:00'
   hours: {
-    monday:    null,
-    tuesday:   null,
-    wednesday: null,
-    thursday:  null,
-    friday:    null,
-    saturday:  null,
-    sunday:    'closed',
+    monday:    '9.00-21.00',
+    tuesday:   '9.00-21.00',
+    wednesday: '9.00-21.00',
+    thursday:  '9.00-21.00',
+    friday:    '9.00-21.00',
+    saturday:  '9.00-21.00',
+    sunday:    '9.00-21.00',
   },
   gallery: {
     // Add real photo filenames here when available

@@ -2,18 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://[DOMAIN]/</loc>
-    <xhtml:link rel="alternate" hreflang="el" href="https://[DOMAIN]/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://[DOMAIN]/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://[DOMAIN]/"/>
+    <loc>https://kommotirio-avdira.gr/</loc>
+    <xhtml:link rel="alternate" hreflang="el" href="https://kommotirio-avdira.gr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kommotirio-avdira.gr/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kommotirio-avdira.gr/"/>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://[DOMAIN]/en/</loc>
-    <xhtml:link rel="alternate" hreflang="el" href="https://[DOMAIN]/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://[DOMAIN]/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://[DOMAIN]/"/>
+    <loc>https://kommotirio-avdira.gr/en/</loc>
+    <xhtml:link rel="alternate" hreflang="el" href="https://kommotirio-avdira.gr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kommotirio-avdira.gr/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kommotirio-avdira.gr/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
