@@ -856,38 +856,26 @@ body { padding-bottom: 80px; }
 
 /* ---- Hero entrance animations (play once on load) ---- */
 @keyframes heroUp {
-  from { opacity: 0; transform: translateY(52px); }
+  from { opacity: 0; transform: translateY(36px); }
   to   { opacity: 1; transform: none; }
 }
-@keyframes heroFade {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
 
-.hero-title    { animation: heroUp   900ms cubic-bezier(0.22, 1, 0.36, 1) 150ms both; }
-.hero-tagline  { animation: heroUp   900ms cubic-bezier(0.22, 1, 0.36, 1) 380ms both; }
-.hero-ctas     { animation: heroUp   900ms cubic-bezier(0.22, 1, 0.36, 1) 580ms both; }
+.hero-title    { animation: heroUp 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94)  150ms both; }
+.hero-tagline  { animation: heroUp 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94)  320ms both; }
+.hero-ctas     { animation: heroUp 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94)  480ms both; }
 
 /* ---- Scroll animations (JS adds .is-visible, sets --delay) ---- */
 [data-anim] {
   opacity: 0;
   transition:
-    opacity 900ms ease var(--delay, 0ms),
-    transform 900ms cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0ms);
+    opacity 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--delay, 0ms),
+    transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--delay, 0ms);
 }
-[data-anim="up"]    { transform: translateY(60px); }
-[data-anim="left"]  { transform: translateX(-60px); }
-[data-anim="right"] { transform: translateX(60px); }
-[data-anim="scale"] { transform: scale(0.85); opacity: 0; }
-[data-anim="clip"]  {
-  opacity: 1;
-  transform: none;
-  clip-path: inset(100% 0 0 0);
-  transition: clip-path 900ms cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0ms);
-}
-
-[data-anim].is-visible               { opacity: 1; transform: none; }
-[data-anim="clip"].is-visible         { clip-path: inset(0% 0 0 0); }
+[data-anim="up"]    { transform: translateY(40px); }
+[data-anim="left"]  { transform: translateX(-44px); }
+[data-anim="right"] { transform: translateX(44px); }
+[data-anim="scale"] { transform: scale(0.90); opacity: 0; }
+[data-anim].is-visible { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-title, .hero-tagline, .hero-ctas { animation: none; }

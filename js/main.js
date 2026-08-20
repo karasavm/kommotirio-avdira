@@ -47,12 +47,12 @@
   // ---- Hero parallax ----
   const heroImg = document.querySelector('.hero-img');
   if (heroImg) {
+    heroImg.style.willChange = 'transform';
     let ticking = false;
     window.addEventListener('scroll', () => {
       if (!ticking) {
         requestAnimationFrame(() => {
-          const scrolled = window.scrollY;
-          heroImg.style.transform = `translateY(${scrolled * 0.3}px)`;
+          heroImg.style.transform = `translateY(${window.scrollY * 0.18}px)`;
           ticking = false;
         });
         ticking = true;
@@ -73,7 +73,7 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -16px 0px' });
 
     // Section titles — underline expands + fade up
     document.querySelectorAll('.section-title').forEach(el => {
@@ -88,9 +88,9 @@
       observe(el);
     });
 
-    // Service cards — clip wipe from bottom, heavily staggered
+    // Service cards — staggered up
     document.querySelectorAll('.service-card').forEach((el, i) => {
-      el.dataset.anim = 'clip';
+      el.dataset.anim = 'up';
       el.style.setProperty('--delay', `${i * 130}ms`);
       observe(el);
     });
