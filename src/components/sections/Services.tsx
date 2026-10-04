@@ -36,10 +36,18 @@ export function Services({ content }: Props) {
           observer.disconnect();
         }
       },
-      { threshold: 0.25, rootMargin: '0px 0px -12% 0px' },
+      { threshold: 0.01, rootMargin: '0px 0px 20% 0px' },
     );
 
     observer.observe(node);
+
+    // Mobile: tall stacked grids may never hit a high threshold — reveal if already on screen
+    const rect = node.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.95) {
+      setVisible(true);
+      observer.disconnect();
+    }
+
     return () => observer.disconnect();
   }, []);
 
