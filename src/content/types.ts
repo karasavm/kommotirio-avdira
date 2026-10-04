@@ -9,9 +9,11 @@ export type NavItem = {
   label: string;
 };
 
-export type CardItem = {
+export type ServiceItem = {
   title: string;
   body: string;
+  imageSrc: string;
+  imageAlt: string;
 };
 
 export type FaqItem = {
@@ -24,9 +26,23 @@ export type HourRow = {
   hours: string;
 };
 
-export type GalleryItem = {
-  src: string;
-  alt: string;
+export type PhotoFeatureAction = {
+  label: string;
+  href: string;
+  external?: boolean;
+};
+
+export type PhotoFeatureContent = {
+  id: string;
+  title: string;
+  text: string;
+  imageSrc: string;
+  imageAlt: string;
+  imagePosition?: string;
+  /** Horizontal placement of the text block */
+  align?: 'start' | 'end';
+  mono?: boolean;
+  actions: PhotoFeatureAction[];
 };
 
 export type PageContent = {
@@ -55,38 +71,48 @@ export type PageContent = {
     navAria: string;
     phoneAria: string;
     phoneLabel: string;
+    servicesCtaLabel: string;
+    callCtaLabel: string;
     menuAria: string;
+    closeAria: string;
     mobileCallLabel: string;
     mobileLangLabel: string;
     nav: NavItem[];
   };
   hero: {
     title: string;
-    location: string;
+    titleEmphasis: string;
     tagline: string;
+    text: string;
     callLabel: string;
-    directionsLabel: string;
+    imageSrc: string;
     imageAlt: string;
   };
+  photoFeatures: PhotoFeatureContent[];
   services: {
     title: string;
     intro: string;
-    items: CardItem[];
+    items: ServiceItem[];
     note: RichPart[];
-  };
-  whyUs: {
-    title: string;
-    items: CardItem[];
   };
   about: {
     title: string;
     paragraphs: string[];
+    highlights: string[];
+    imageSrc: string;
+    imageAlt: string;
   };
-  gallery: {
+  treatments: {
     title: string;
-    intro: string;
-    listAria: string;
-    items: GalleryItem[];
+    text: string;
+    imageSrc: string;
+    imageAlt: string;
+    brands: Array<{
+      name: string;
+      imageSrc: string;
+      imageAlt: string;
+    }>;
+    actions: PhotoFeatureAction[];
   };
   location: {
     title: string;
@@ -100,6 +126,8 @@ export type PageContent = {
   hours: {
     title: string;
     caption: string;
+    dayLabel: string;
+    hoursLabel: string;
     rows: HourRow[];
     note: RichPart[];
   };
@@ -111,6 +139,9 @@ export type PageContent = {
     title: string;
     text: string;
     buttonLabel: string;
+    secondaryLabel: string;
+    imageSrc: string;
+    imageAlt: string;
   };
   footer: {
     name: string;

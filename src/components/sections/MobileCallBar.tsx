@@ -17,12 +17,14 @@ export function MobileCallBar({ content }: Props) {
       insetInline="0"
       p="3"
       bg="bg"
+      borderTopWidth="1px"
+      borderColor="border"
       display={{ base: 'block', md: 'none' }}
       zIndex="banner"
     >
-      <Button asChild width="full">
+      <Button asChild width="full" variant="minimal">
         <a href={`tel:${site.phone}`} aria-label={mobileCall.aria}>
-          <LuPhone />
+          <LuPhone aria-hidden />
           {mobileCall.label}
         </a>
       </Button>

@@ -1,40 +1,53 @@
-import { Box } from '@chakra-ui/react';
+import type { ReactNode } from 'react';
 import { Provider } from '@/components/ui/provider';
 import type { PageContent } from '@/content/types';
 import { Hero } from '@/components/sections/Hero';
-import { Services } from '@/components/sections/Services';
-import { WhyUs } from '@/components/sections/WhyUs';
+import { PhotoFeature } from '@/components/sections/PhotoFeature';
 import { About } from '@/components/sections/About';
-import { Gallery } from '@/components/sections/Gallery';
-import { Location } from '@/components/sections/Location';
-import { Hours } from '@/components/sections/Hours';
-import { Faq } from '@/components/sections/Faq';
+import { Treatments } from '@/components/sections/Treatments';
 import { Cta } from '@/components/sections/Cta';
+import { Location } from '@/components/sections/Location';
 import { Footer } from '@/components/sections/Footer';
 import { MobileCallBar } from '@/components/sections/MobileCallBar';
 
-type Props = {
+type ContentProps = {
   content: PageContent;
 };
 
-export function HomePage({ content }: Props) {
+type AfterProps = ContentProps & {
+  children?: ReactNode;
+};
+
+/** Hero → PhotoFeatures → About → Treatments. Services island follows in Astro. */
+export function HomePageBefore({ content }: ContentProps) {
   return (
     <Provider>
-      <Box pb={{ base: '20', md: '0' }}>
-        <Box as="main" id="main-content">
-          <Hero content={content} />
-          <Services content={content} />
-          <WhyUs content={content} />
-          <About content={content} />
-          <Gallery content={content} />
-          <Location content={content} />
-          <Hours content={content} />
-          <Faq content={content} />
-          <Cta content={content} />
-        </Box>
-        <Footer content={content} />
-        <MobileCallBar content={content} />
-      </Box>
+      <Hero content={content} />
+      {content.photoFeatures.map((feature) => (
+        <PhotoFeature key={feature.id} feature={feature} />
+      ))}
+      <About content={content} />
+      <Treatments content={content} />
+    </Provider>
+  );
+}
+
+/** Cta → Location → FAQ (children). Footer chrome is separate. */
+export function HomePageAfter({ content, children }: AfterProps) {
+  return (
+    <Provider>
+      <Cta content={content} />
+      <Location content={content} />
+      {children}
+    </Provider>
+  );
+}
+
+export function HomePageChrome({ content }: ContentProps) {
+  return (
+    <Provider>
+      <Footer content={content} />
+      <MobileCallBar content={content} />
     </Provider>
   );
 }

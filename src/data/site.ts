@@ -14,9 +14,9 @@ export const site = {
   countryNameEn: 'Greece',
   facebook: 'https://www.facebook.com/komot.eleni',
   googleMaps:
-    'https://www.google.com/maps/place/%CE%9A%CE%BF%CE%BC%CE%BC%CF%89%CF%84%CE%AE%CF%81%CE%B9%CE%BF+%22%CE%95%CE%9B%CE%95%CE%9D%CE%97%22/@40.9811198,24.9496361,17z',
+    'https://www.google.com/maps/place/%CE%9A%CE%BF%CE%BC%CE%BC%CF%89%CF%84%CE%AE%CF%81%CE%B9%CE%BF+%22%CE%95%CE%9B%CE%95%CE%9D%CE%97%22/@40.9811198,24.952211,17z/data=!4m6!3m5!1s0x14ae7f789f16bf1b:0x3dbbb4be6d31d859!8m2!3d40.9811198!4d24.952211!16s%2Fg%2F11vjgq7jl9',
   mapsEmbed:
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d192795.71442920945!2d24.8312098357351!3d40.97199762327274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ae7f789f16bf1b%3A0x3dbbb4be6d31d859!2zzprOv868zrzPic-Ezq7Pgc65zr8gIs6VzpvOlc6dzpci!5e0!3m2!1sen!2sgr!4v1787261112553!5m2!1sen!2sgr',
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3020.5!2d24.952211!3d40.9811198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ae7f789f16bf1b%3A0x3dbbb4be6d31d859!2zzprOv868zrzPic-Ezq7Pgc65zr8gIs6VzpvOlc6dzpci!5e0!3m2!1sel!2sgr!4v1!5m2!1sel!2sgr',
   lat: 40.9811198,
   lng: 24.952211,
   hours: {

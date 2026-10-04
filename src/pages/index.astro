@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { HeaderIsland } from '@/components/islands/HeaderIsland';
-import { HomePage } from '@/components/HomePage';
+import { ServicesIsland } from '@/components/islands/ServicesIsland';
+import { FaqIsland } from '@/components/islands/FaqIsland';
+import { HomePageBefore, HomePageAfter, HomePageChrome } from '@/components/HomePage';
 import { getContent } from '@/content';
 
 const content = getContent('el');
@@ -12,10 +14,20 @@ const headerContent = {
   otherLocaleLabel: content.otherLocaleLabel,
   otherLocaleAria: content.otherLocaleAria,
   header: content.header,
+  footer: content.footer,
 };
 ---
 
 <BaseLayout content={content}>
-  <HeaderIsland client:load content={headerContent} />
-  <HomePage content={content} />
+  <div class="site-shell">
+    <HeaderIsland client:load content={headerContent} />
+    <main id="main-content">
+      <HomePageBefore content={content} />
+      <ServicesIsland client:load content={{ services: content.services }} />
+      <HomePageAfter content={content}>
+        <FaqIsland client:visible content={{ faq: content.faq }} />
+      </HomePageAfter>
+    </main>
+    <HomePageChrome content={content} />
+  </div>
 </BaseLayout>

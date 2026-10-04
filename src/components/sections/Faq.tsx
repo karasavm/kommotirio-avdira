@@ -1,34 +1,38 @@
-import { Box, Card, Container, Heading, Stack, Text } from '@chakra-ui/react';
+import { Accordion, Box, Container, Span, Stack } from '@chakra-ui/react';
+import { SectionHeader } from '@/components/SectionHeader';
 import { RichText } from '@/components/RichText';
 import type { PageContent } from '@/content/types';
 
 type Props = {
-  content: PageContent;
+  content: Pick<PageContent, 'faq'>;
 };
 
 export function Faq({ content }: Props) {
   const { faq } = content;
 
   return (
-    <Box as="section" id="faq" py="12" aria-labelledby="faq-heading">
-      <Container>
-        <Stack gap="6">
-          <Heading as="h2" id="faq-heading" size="xl">
-            {faq.title}
-          </Heading>
+    <Box as="section" id="faq" layerStyle="sectionMuted" aria-labelledby="faq-heading">
+      <Container maxW="3xl">
+        <Stack gap="8">
+          <SectionHeader id="faq-heading" title={faq.title} align="center" />
 
-          <Stack gap="3">
-            {faq.items.map((item) => (
-              <Card.Root key={item.question} as="details">
-                <Card.Body>
-                  <Text as="summary">{item.question}</Text>
-                  <Box pt="3">
+          <Accordion.Root collapsible multiple variant="plain">
+            {faq.items.map((item, index) => (
+              <Accordion.Item key={item.question} value={`item-${index}`} borderBottomWidth="1px" borderColor="border">
+                <Accordion.ItemTrigger py="4">
+                  <Span flex="1" fontWeight="medium" textAlign="start">
+                    {item.question}
+                  </Span>
+                  <Accordion.ItemIndicator />
+                </Accordion.ItemTrigger>
+                <Accordion.ItemContent>
+                  <Accordion.ItemBody pb="4" color="fg.muted">
                     <RichText parts={item.answer} />
-                  </Box>
-                </Card.Body>
-              </Card.Root>
+                  </Accordion.ItemBody>
+                </Accordion.ItemContent>
+              </Accordion.Item>
             ))}
-          </Stack>
+          </Accordion.Root>
         </Stack>
       </Container>
     </Box>
