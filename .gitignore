@@ -33,3 +33,9 @@ npm-debug.log*
 # Misc
 *.log
 Thumbs.db
+
+# Astro
+dist/
+.astro/
+.vercel/
+screenshots/

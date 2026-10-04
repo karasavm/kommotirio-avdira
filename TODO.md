@@ -12,6 +12,7 @@
 
 ## Content from client
 
+- [ ] Review all images in `public/` later (favicon, apple-touch-icon, og-image, placeholders/gallery) — replace or confirm before launch
 - [ ] Real hero photo → export as AVIF + WebP + JPEG at 800×900 and 1600×900 px
 - [ ] Gallery photos (4+) → 800×600 px, AVIF + WebP + JPEG, add to `images/gallery/`
 - [ ] Real logo → SVG preferred; PNG fallback at 200×80 px → replace text logo in header

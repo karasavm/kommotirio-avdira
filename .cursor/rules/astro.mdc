@@ -1,0 +1,35 @@
+---
+description: Astro best practices for this content-focused site
+globs:
+  - src/**/*.{astro,tsx,ts,mjs}
+  - astro.config.mjs
+alwaysApply: false
+---
+
+# Astro project rules (helenhaircut)
+
+## Architecture
+
+- Server-first, zero JS by default. Prefer static HTML from Astro or SSR React without `client:*`.
+- Use `client:load` / `client:visible` / `client:idle` only for components that need browser interactivity (e.g. Drawer).
+- Do not wrap the whole page in one hydrated island.
+- Interactive islands that need Chakra must mount their own `Provider` (see `src/components/islands/`).
+- SSR React trees also wrap with `Provider` (`src/components/ui/provider.tsx`) — ChakraProvider only, no color-mode.
+
+## Structure
+
+- Routes live in `src/pages/` (file-based routing).
+- Shared document shell / SEO / JSON-LD live in `src/layouts/BaseLayout.astro`.
+- Locale copy stays in typed modules under `src/content/` (`el.ts`, `en.ts`, `types.ts`). Do not invent a parallel content system unless asked.
+- Static unprocessed assets go in `public/`. App CSS/JS belongs in `src/`.
+
+## Integrations and APIs
+
+- Prefer `astro add <integration>` for official integrations over hand-editing `package.json`.
+- Verify current Astro APIs against docs before using older patterns (especially content collections, actions, sessions).
+- Set and respect `site` in `astro.config.mjs` for canonical URLs and SEO helpers.
+
+## UI
+
+- Keep presentational sections SSR-capable. Prefer native HTML (`details`/`summary`, links) over hydrated widgets when interaction is simple.
+- Chakra is the design system for section components; do not introduce a second UI kit without an explicit request.

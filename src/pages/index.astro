@@ -1,0 +1,21 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { HeaderIsland } from '@/components/islands/HeaderIsland';
+import { HomePage } from '@/components/HomePage';
+import { getContent } from '@/content';
+
+const content = getContent('el');
+const headerContent = {
+  locale: content.locale,
+  homePath: content.homePath,
+  otherLocalePath: content.otherLocalePath,
+  otherLocaleLabel: content.otherLocaleLabel,
+  otherLocaleAria: content.otherLocaleAria,
+  header: content.header,
+};
+---
+
+<BaseLayout content={content}>
+  <HeaderIsland client:load content={headerContent} />
+  <HomePage content={content} />
+</BaseLayout>
