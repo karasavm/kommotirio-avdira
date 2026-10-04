@@ -1,0 +1,70 @@
+---
+description: Chakra UI v3 AI setup (MCP, llms.txt, skills) and project conventions
+globs:
+  - src/components/**/*.{tsx,ts}
+alwaysApply: false
+---
+
+# Chakra UI agent rules (helenhaircut)
+
+This project uses **Chakra UI v3** (`@chakra-ui/react`). Prefer current v3 APIs; do not invent v2 patterns.
+
+Official AI surface (all three): https://chakra-ui.com/docs/get-started/ai/mcp-server · https://chakra-ui.com/docs/get-started/ai/llms · https://chakra-ui.com/docs/get-started/ai/skills
+
+## 1. MCP (live lookup — prefer this)
+
+Configured in `.cursor/mcp.json` as `chakra-ui`:
+
+```bash
+npx -y @chakra-ui/react-mcp
+```
+
+Use MCP tools before guessing:
+
+- `list_components` / `get_component_props` / `get_component_example`
+- `get_theme` / `theme_customization`
+- `v2_to_v3_code_review` when touching old v2 code
+
+Optional Pro templates need `CHAKRA_PRO_API_KEY` in MCP `env` (do not invent a key).
+
+If Cursor does not detect the server, restart or enable **MCP Tools → chakra-ui**.
+
+## 2. LLMs.txt (docs context fallback)
+
+When MCP is unavailable, attach Chakra docs via Cursor `@Docs`:
+
+- `https://chakra-ui.com/llms.txt` — index
+- `https://chakra-ui.com/llms-full.txt` — full v3 docs
+- Scoped: `llms-components.txt`, `llms-styling.txt`, `llms-theming.txt`
+- Migration: `llms-v3-migration.txt`
+
+Prefer MCP over pasting full docs into context.
+
+## 3. AI Skills (installed — follow when relevant)
+
+Installed under `.agents/skills/` via official:
+
+```bash
+npx skills add https://github.com/chakra-ui/chakra-ui/tree/main/skills
+```
+
+| Skill | Use when |
+|-------|----------|
+| `chakra-ui-builder` | Build/create UI, theming, charts, setup |
+| `chakra-ui-migrate` | v2 → v3 upgrades / breaking changes |
+| `chakra-ui-refactor` | Review or convert existing UI to v3 Chakra |
+
+Skills activate from natural language (no need to name them). They default to v3 and check `package.json`. Read the matching skill’s `SKILL.md` before substantial Chakra work.
+
+## Suggested agent flow
+
+1. For build/migrate/refactor intents → load the matching Chakra skill.
+2. For props/examples/tokens → query Chakra MCP.
+3. If MCP is down → `@Docs` with the smallest relevant `llms-*.txt`.
+4. Implement with v3 compound components and semantic tokens; keep Astro island rules (hydrate only when interactive).
+
+## Project conventions
+
+- Chakra is the only UI kit for section components.
+- Interactive islands wrap with client `Provider` (`src/components/ui/provider.tsx` / islands).
+- Prefer semantic tokens and Chakra layout primitives over ad hoc CSS.
