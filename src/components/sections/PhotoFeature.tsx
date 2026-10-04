@@ -5,9 +5,13 @@ type Props = {
   feature: PhotoFeatureContent;
 };
 
+const clipStyle = {
+  clipPath: 'inset(0)',
+  WebkitClipPath: 'inset(0)',
+} as const;
+
 export function PhotoFeature({ feature }: Props) {
   const alignEnd = feature.align === 'end';
-  const panelH = { base: '70vh', md: '100vh' };
 
   return (
     <Box
@@ -15,89 +19,82 @@ export function PhotoFeature({ feature }: Props) {
       id={feature.id}
       aria-labelledby={`${feature.id}-heading`}
       position="relative"
-      h={panelH}
+      minH={{ base: '70vh', md: '100vh' }}
       bgColor="bg.inverted"
+      display="flex"
+      alignItems="center"
+      justifyContent={alignEnd ? 'flex-end' : 'flex-start'}
+      pl={{
+        base: '6',
+        md: alignEnd ? '8' : '10%',
+        lg: alignEnd ? '8' : '12%',
+        xl: alignEnd ? '8' : '14%',
+      }}
+      pr={{
+        base: '6',
+        md: alignEnd ? '8%' : '8',
+        lg: alignEnd ? '10%' : '8',
+        xl: alignEnd ? '12%' : '8',
+      }}
+      py="16"
+      style={clipStyle}
     >
       <Box
-        position="sticky"
-        top="0"
-        h={panelH}
-        display="flex"
-        alignItems="center"
-        justifyContent={alignEnd ? 'flex-end' : 'flex-start'}
-        pl={{
-          base: '6',
-          md: alignEnd ? '8' : '10%',
-          lg: alignEnd ? '8' : '12%',
-          xl: alignEnd ? '8' : '14%',
+        position="fixed"
+        inset="0"
+        zIndex="0"
+        bgImage={`url(${feature.imageSrc})`}
+        bgSize="cover"
+        bgPos={{
+          base: '60% center',
+          md: feature.imagePosition ?? 'center',
         }}
-        pr={{
-          base: '6',
-          md: alignEnd ? '8%' : '8',
-          lg: alignEnd ? '10%' : '8',
-          xl: alignEnd ? '12%' : '8',
-        }}
-        py="16"
-        overflow="hidden"
+        filter={feature.mono ? 'grayscale(1)' : undefined}
+        role="img"
+        aria-label={feature.imageAlt}
+      />
+      <Box position="fixed" inset="0" zIndex="0" bg="blackAlpha.400" />
+      <Stack
+        gap="5"
+        align="center"
+        textAlign="center"
+        maxW="md"
+        w={{ base: 'full', md: 'auto' }}
+        color="fg.inverted"
+        position="relative"
+        zIndex="1"
       >
-        <Box
-          position="absolute"
-          insetY="0"
-          left={{ base: '-60%', md: '0' }}
-          w={{ base: '160%', md: 'full' }}
-          bgImage={`url(${feature.imageSrc})`}
-          bgSize="cover"
-          bgPos={{
-            base: 'left center',
-            md: feature.imagePosition ?? 'center',
-          }}
-          filter={feature.mono ? 'grayscale(1)' : undefined}
-          role="img"
-          aria-label={feature.imageAlt}
-        />
-        <Box position="absolute" inset="0" bg="blackAlpha.400" />
-        <Stack
-          gap="5"
-          align="center"
-          textAlign="center"
-          maxW="md"
-          w={{ base: 'full', md: 'auto' }}
+        <Heading
+          as="h2"
+          id={`${feature.id}-heading`}
+          textStyle="heroTitle"
           color="fg.inverted"
-          position="relative"
-          zIndex="1"
         >
-          <Heading
-            as="h2"
-            id={`${feature.id}-heading`}
-            textStyle="heroTitle"
-            color="fg.inverted"
-          >
-            {feature.title}
-          </Heading>
-          <Text fontSize={{ base: 'sm', md: 'md' }} lineHeight="1.7" color="fg.inverted">
-            {feature.text}
-          </Text>
-          <HStack gap="3" flexWrap="wrap" justify="center" pt="1">
-            {feature.actions.map((action) => (
-              <Button
-                key={`${action.href}-${action.label}`}
-                asChild
-                size="md"
-                variant="minimalInverse"
+          {feature.title}
+        </Heading>
+        <Text fontSize={{ base: 'sm', md: 'md' }} lineHeight="1.7" color="fg.inverted">
+          {feature.text}
+        </Text>
+        <HStack gap="3" flexWrap="wrap" justify="center" pt="1">
+          {feature.actions.map((action) => (
+            <Button
+              key={`${action.href}-${action.label}`}
+              asChild
+              size="md"
+              variant="minimalInverse"
+            >
+              <a
+                href={action.href}
+                {...(action.external
+                  ? { target: '_blank', rel: 'noopener noreferrer' }
+                  : {})}
               >
-                <a
-                  href={action.href}
-                  {...(action.external
-                    ? { target: '_blank', rel: 'noopener noreferrer' }
-                    : {})}
-                >
-                  {action.label}
-                </a>
-              </Button>
-            ))}
-          </HStack>
-        </Stack>
-      </Box>
+                {action.label}
+              </a>
+            </Button>
+          ))}
+        </HStack>
+      </Stack>
     </Box>
   );
 }

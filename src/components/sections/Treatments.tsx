@@ -5,6 +5,11 @@ type Props = {
   content: Pick<PageContent, 'treatments'>;
 };
 
+const clipStyle = {
+  clipPath: 'inset(0)',
+  WebkitClipPath: 'inset(0)',
+} as const;
+
 export function Treatments({ content }: Props) {
   const { treatments } = content;
 
@@ -19,10 +24,10 @@ export function Treatments({ content }: Props) {
       display="flex"
       alignItems="center"
       py={{ base: '16', md: '20' }}
-      clipPath={{ md: 'inset(0)' }}
+      style={clipStyle}
     >
       <Box
-        position={{ base: 'absolute', md: 'fixed' }}
+        position="fixed"
         inset="0"
         zIndex="0"
         bgImage={`url(${treatments.imageSrc})`}
@@ -31,7 +36,7 @@ export function Treatments({ content }: Props) {
         role="img"
         aria-label={treatments.imageAlt}
       />
-      <Box position={{ base: 'absolute', md: 'fixed' }} inset="0" zIndex="0" bg="blackAlpha.600" />
+      <Box position="fixed" inset="0" zIndex="0" bg="blackAlpha.600" />
 
       <Container maxW="6xl" position="relative" zIndex="1">
         <SimpleGrid columns={{ base: 1, lg: 2 }} gap={{ base: '10', lg: '16' }} alignItems="center">

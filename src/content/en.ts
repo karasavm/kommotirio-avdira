@@ -61,7 +61,7 @@ export const en: PageContent = {
       text: 'From an everyday cut to a special-occasion look — explore our services and book your visit in Avdira.',
       imageSrc: '/images/kommotirio-eleni-avdira-find-your-style.webp',
       imageAlt: 'Find your style at Helen Haircut',
-      imagePosition: 'left center',
+      imagePosition: '60% center',
       align: 'start',
       mono: false,
       actions: [

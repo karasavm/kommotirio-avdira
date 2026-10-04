@@ -61,7 +61,7 @@ export const el: PageContent = {
       text: 'Από το καθημερινό κούρεμα μέχρι το χτένισμα για μια ξεχωριστή στιγμή — ανακαλύψτε τις υπηρεσίες μας και κλείστε ραντεβού στα Άβδηρα.',
       imageSrc: '/images/kommotirio-eleni-avdira-find-your-style.webp',
       imageAlt: 'Βρείτε το στυλ σας στο Κομμωτήριο Ελένη',
-      imagePosition: 'left center',
+      imagePosition: '60% center',
       align: 'start',
       mono: false,
       actions: [
