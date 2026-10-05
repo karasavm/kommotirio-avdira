@@ -1,12 +1,15 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { HeaderIsland } from '@/components/islands/HeaderIsland';
-import { ServicesIsland } from '@/components/islands/ServicesIsland';
 import { FaqIsland } from '@/components/islands/FaqIsland';
 import { HomePageBefore, HomePageAfter, HomePageChrome } from '@/components/HomePage';
 import { getContent } from '@/content';
+import { Image } from 'astro:assets';
+import { siteImages } from '@/lib/site-images';
+import { optimizePageImages } from '@/lib/optimize-page-images';
 
-const content = getContent('en');
+const raw = getContent('en');
+const { content, brands, heroPreloadSrc } = await optimizePageImages(raw);
 const headerContent = {
   locale: content.locale,
   homePath: content.homePath,
@@ -18,12 +21,20 @@ const headerContent = {
 };
 ---
 
-<BaseLayout content={content}>
+<BaseLayout content={content} heroPreloadSrc={heroPreloadSrc}>
   <div class="site-shell">
-    <HeaderIsland client:load content={headerContent} />
+    <HeaderIsland client:idle content={headerContent} />
     <main id="main-content">
-      <HomePageBefore content={content} />
-      <ServicesIsland client:load content={{ services: content.services }} />
+      <HomePageBefore content={content} brandImages={brands}>
+        <Image
+          src={siteImages.hero}
+          alt={content.hero.imageAlt}
+          widths={[640, 960, 1280, 1920]}
+          sizes="100vw"
+          priority
+          class="hero-lcp-img"
+        />
+      </HomePageBefore>
       <HomePageAfter content={content}>
         <FaqIsland client:visible content={{ faq: content.faq }} />
       </HomePageAfter>

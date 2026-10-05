@@ -1,9 +1,12 @@
+import type { ReactNode } from 'react';
 import { Box, Button, Heading, Stack, Text } from '@chakra-ui/react';
 import { site } from '@/data/site';
 import type { PageContent } from '@/content/types';
 
 type Props = {
   content: PageContent;
+  /** Astro `<Image />` (or other static markup) passed as children from `.astro` */
+  image?: ReactNode;
 };
 
 const clipStyle = {
@@ -11,7 +14,7 @@ const clipStyle = {
   WebkitClipPath: 'inset(0)',
 } as const;
 
-export function Hero({ content }: Props) {
+export function Hero({ content, image }: Props) {
   const { hero } = content;
 
   return (
@@ -28,19 +31,7 @@ export function Hero({ content }: Props) {
       py="16"
       style={clipStyle}
     >
-      <Box
-        position="fixed"
-        insetY="0"
-        left={{ base: '-60%', md: '0' }}
-        w={{ base: '160%', md: 'full' }}
-        zIndex="0"
-        bgImage={`url(${hero.imageSrc})`}
-        bgSize="cover"
-        bgPos="center"
-        filter="grayscale(1)"
-        role="img"
-        aria-label={hero.imageAlt}
-      />
+      {image}
       <Box position="fixed" inset="0" zIndex="0" layerStyle="heroOverlay" />
       <Stack
         gap={{ base: '5', md: '6' }}

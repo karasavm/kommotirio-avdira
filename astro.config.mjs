@@ -7,6 +7,14 @@ import { fileURLToPath } from 'node:url';
 export default defineConfig({
   site: 'https://kommotirio-avdira.gr',
   integrations: [react()],
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        webp: { effort: 6 },
+      },
+    },
+  },
   vite: {
     resolve: {
       alias: {
